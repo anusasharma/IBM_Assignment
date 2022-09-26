@@ -1,0 +1,65 @@
+<div class="container-fluid" style="width: 100%">
+  <nav class="navbar navbar-dark navbar-expand-sm" style="background: #60392F !important;">
+    <div style="font-weight: bold; font-size: 20px;" class="w-100 text-white">
+      <img class="logo" src="assets/img/coffee.png" width="5%" alt="logo"/>
+      Coffee Culture
+    </div>
+    <div id="navbar_menu">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link active">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/products" class="nav-link active">Products</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div>
+    <h1 class="text-center">Product List</h1>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Blend name</th>
+      <th>Origin</th>
+      <th>Variety</th>
+      <th>Intensifier</th>
+      <th>Notes</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: p }; let i = index ">
+      <td>
+        <label>{{product.id}}</label>
+      </td>
+      <td>
+        <label>{{product.blend_name}}</label>
+      </td>
+      <td>
+        <label>{{product.origin}}</label>
+      </td>
+      <td>
+        <label>{{product.variety}}</label>
+      </td>
+      <td>
+        <label>{{product.intensifier}}</label>
+      </td>
+      <td>
+        <label>{{product.notes}}</label>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+
+  <!--Including the pagination control.-->
+  <div class="text-end">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
